@@ -1,8 +1,10 @@
 #- Alunos: nome, matrícula (1238734), data de nascimento, sexo, endereço, telefone, e-mail.
 import random
-def cadastro_aluno(nome,data_dia,data_mes,data_ano,sexo,endereco,tel,email):
+def cadastro_aluno(nome,data_dia,data_mes,data_ano,sexo,endereco,tel,email,cod_nome):
     matricula = random.randint(1000000,9999999)
-    ficha_aluno = {'nome': nome, 'data de nascimento' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo' : sexo, 'endereco' : endereco, 'telefone' : tel, 'email' : email, 'Numero da matricula' : matricula}
+    cod_matricula = str(matricula)
+    cod_matriculafinal = cod_matricula + cod_nome
+    ficha_aluno = {'nome': nome, 'data de nascimento' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo' : sexo, 'endereco' : endereco, 'telefone' : tel, 'email' : email, 'Numero da matricula' : cod_matriculafinal}
     
     print(f'cadastro feito com sucesso:')
     return ficha_aluno
@@ -14,8 +16,9 @@ sexo = input(f'sexo do aluno(a):')
 endereco = input(f'endereço do aluno(a):')
 tel =  input(f'telefone do aluno(a): ')
 email = input(f'email do aluno(a):')
+cod_nome = nome[0].upper()
 
-resultado = cadastro_aluno(nome,data_dia,data_mes,data_ano,sexo,endereco,tel,email)
+resultado = cadastro_aluno(nome,data_dia,data_mes,data_ano,sexo,endereco,tel,email,cod_nome)
 
 print(resultado)
     
