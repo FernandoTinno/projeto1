@@ -24,9 +24,12 @@ def main():
         opcao = input("Digite a opção: ")
         if opcao == '1':
             voltar = controle.chamar_funcao_aluno()
+        elif opcao == '4':
+            voltar = controle.chamar_funcao_turma()
         elif opcao == '12':
             voltar = False
-        else:
-            print(f'Você saiu do GAMPT')
+            print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
+        
+            
 
 main()

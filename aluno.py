@@ -14,34 +14,52 @@ def cadastro_aluno():
     tel =  input(f'telefone do aluno(a): ')
     email = input(f'email do aluno(a):')
     
+    
     letras = 'ABCDE'
     embaralhar_letra = random.choice(letras)
     matricula = random.randint(1000000,9999999)
     cod_matricula = str(matricula)
     cod_matriculafinal = cod_matricula + embaralhar_letra
     
+    
     lista_aluno = []
-    ficha_aluno = {'nome': nome, 'data de nascimento' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo' : sexo, 'endereco' : endereco, 'telefone' : tel, 'email' : email, 'Numero da matricula' : cod_matriculafinal}
-    nome_aluno = ficha_aluno['nome']
+    ficha_aluno = {'nome_a': nome, 'nascimento_a' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo_a' : sexo, 'endereco_a' : endereco, 'telefone_a' : tel, 'email_a' : email, 'codigo_a' : cod_matriculafinal}
+    nome_aluno = ficha_aluno['nome_a']
     lista_aluno.append(nome_aluno)
+    
     
     print(f'cadastro feito com sucesso!\n')
    
-    mostrar = input(f'você gostaria de ver como ficou o cadastro?(digite S ou N)')
-    veri_mostrar = mostrar.lower()
-    
-    if veri_mostrar == 's':
-        print (f'{ficha_aluno}\n')
-    else:
-        print(f'Tudo bem!')
-        
-    voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):')
-    if voltar == 's':
-        return True
-    else:
-        return print(f'voce saiu do GAMPT')
-        
+   
+    while True:
+        mostrar = input(f'Você gostaria de ver como ficou o cadastro? (digite S ou N): ')
+        veri_mostrar = mostrar.lower()
 
+        if veri_mostrar == 's':
+            print(f'{ficha_aluno}\n')
+        
+            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):')
+            if voltar == 's':
+                return True
+            else:
+                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
+            
+            
+        elif veri_mostrar == 'n':
+            print(f'Tudo bem!')
+            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):')
+            if voltar == 's':
+                return True
+            else:
+                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
+            
+            
+        else:
+            print(f'Opção inválida. Por favor, digite S ou N.')
+           
+        
+        
+#cadastro_aluno()
 
 
     
