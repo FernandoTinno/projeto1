@@ -1,6 +1,4 @@
-import aluno
-
-
+import controle
 '''
 - Crie um sistema escolar que permita cadastrar alunos, professores, disciplinas e turmas.
 - Alunos: nome, matrícula (1238734), data de nascimento, sexo, endereço, telefone, e-mail.
@@ -18,26 +16,17 @@ import aluno
 - O sistema deve permitir a consulta de disciplinas alocadas em turmas.
 
 '''
-def lobby():
-    print(f'\nbem-vindo ao G.A.M.P.T(Gerenciador de Alunos, Matérias, Professores e Turmas)\n')
 
-    print(f'quais serviços do GAMPT você deseja acessar?\n')
+def main():
+    voltar = True
+    while voltar:
+        controle.menu()
+        opcao = input("Digite a opção: ")
+        if opcao == '1':
+            voltar = controle.chamar_funcao_aluno()
+        elif opcao == '12':
+            voltar = False
+        else:
+            print(f'Você saiu do GAMPT')
 
-    print(f'1-Cadastrar aluno')
-    print(f'2-Cadastrar Professor')
-    print(f'3-Cadastrar Materia')
-    print(f'4-Cadastrar Turma')
-    print(f'5-Atribuir aluno a uma turma')
-    print(f'6-Atribuir uma disciplina a um professor')
-    print(f'7-Atribuir uma disciplina a uma turma')
-    print(f'8-Filtrar professor por disciplina')
-    print(f'9-Consultar alunos matriculados em turmas especificas')
-    print(f'10-Consultar quais são as disciplinas regidas por um professor especifico')
-    print(f'11-Consultar quais disciplinas estão interligadas a cada turma')
-    print(f'12-Sair\n')
-
-lobby()
-opcao = input(f'digite o número de acordo com a opção que você deseja:')
-
-if opcao == '1':
-    aluno.cadastro_aluno()
+main()
