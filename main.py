@@ -24,6 +24,13 @@ def main():
         opcao = input("Digite a opção: ")
         if opcao == '1':
             voltar = controle.chamar_funcao_aluno()
+            
+        elif opcao == '2':
+            voltar = controle.chamar_funcao_prof()
+            
+        elif opcao == '3':
+            voltar = controle.chamar_funcao_materia()
+            
         elif opcao == '4':
             voltar = controle.chamar_funcao_turma()
         elif opcao == '12':
@@ -33,3 +40,9 @@ def main():
             
 
 main()
+
+
+'''
+amanha pensar na hierarquia dos processos de matricula. exp: nn pode cadastrar a turma se não houver aluno,professor e disciplina e assim em diante
+e pensar como armazenar os cadastros.
+'''

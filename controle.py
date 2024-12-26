@@ -1,4 +1,6 @@
 import aluno
+import prof
+import materia
 import turma
 def menu():
     print(f'\nbem-vindo ao G.A.M.P.T(Gerenciador de Alunos, Matérias, Professores e Turmas)\n')
@@ -21,6 +23,14 @@ def menu():
 
 def chamar_funcao_aluno():
     return aluno.cadastro_aluno()
+
+
+def chamar_funcao_prof():
+    return prof.cadastro_prof()
+
+
+def chamar_funcao_materia():
+    return materia.cadastro_materia()
 
 def chamar_funcao_turma():
     return turma.cadastro_turma()

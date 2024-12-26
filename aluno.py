@@ -6,9 +6,14 @@ import random
 def cadastro_aluno():
     
     nome = input(f'Qual o nome do aluno(a):')
-    data_dia = input(f'em que dia nasceu o aluno(a):')
-    data_mes = input(f'em que mes nasceu o aluno(a):')
-    data_ano = input(f'em que ano nasceu o aluno(a):')
+    while True:
+            try:
+                data_dia = int(input(f'em que dia nasceu o aluno(a):'))
+                data_mes = int(input(f'em que mes nasceu o aluno(a):'))
+                data_ano = int(input(f'em que ano nasceu o aluno(a):'))
+                break  
+            except ValueError:
+                print("\nnão foi possivel cadastrar a data de nascimento, digite números inteiros.\n")
     sexo = input(f'sexo do aluno(a):')
     endereco = input(f'endereço do aluno(a):')
     tel =  input(f'telefone do aluno(a): ')
@@ -29,37 +34,30 @@ def cadastro_aluno():
     
     
     print(f'cadastro feito com sucesso!\n')
-   
+    
+    while True:
+            
+                mostrar = input(f'Você gostaria de ver como ficou o cadastro? (digite S ou N): ')
+                veri_mostrar = mostrar.lower()
+                if veri_mostrar == 's':
+                    print(f'{ficha_aluno}\n')
+                    break      
+                elif veri_mostrar == 'n':
+                    print(f'Tudo bem!')
+                    break
+                else:
+                    print(f'deu errado')
    
     while True:
-        mostrar = input(f'Você gostaria de ver como ficou o cadastro? (digite S ou N): ')
-        veri_mostrar = mostrar.lower()
-
-        if veri_mostrar == 's':
-            print(f'{ficha_aluno}\n')
-        
-            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):')
+            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):').lower()
+            
             if voltar == 's':
                 return True
+            
+            elif voltar == 'n':
+                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
             else:
-                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
-            
-            
-        elif veri_mostrar == 'n':
-            print(f'Tudo bem!')
-            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):')
-            if voltar == 's':
-                return True
-            else:
-                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
-            
-            
-        else:
-            print(f'Opção inválida. Por favor, digite S ou N.')
-           
-        
-        
-#cadastro_aluno()
+                print(f'Opção inválida. Por favor, digite S ou N.')
 
 
-    
+
