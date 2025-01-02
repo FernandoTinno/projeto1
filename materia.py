@@ -1,6 +1,5 @@
 #Disciplinas: nome, código (A1234), carga horária, professor.
 
-import random
 def cadastro_materia():
     
     
@@ -22,9 +21,8 @@ def cadastro_materia():
    
    
     ficha_materia = {'nome_materia' : nome, 'carga_materia' : carga, 'professor_materia' : materia_professor, 'codigo_materia' : cod_materiafinal}
-    lista_materia = []
-    nome_materia = ficha_materia['nome_materia']
-    lista_materia.append(nome_materia)
+    
+    materia_lista.append(ficha_materia['nome_materia'])
     
     print(f'cadastro feito com sucesso:\n')
     
@@ -42,16 +40,7 @@ def cadastro_materia():
                 else:
                     print(f'deu errado')
    
-    while True:
-            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):').lower()
-            
-            if voltar == 's':
-                return True
-            
-            elif voltar == 'n':
-                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
-            else:
-                print(f'Opção inválida. Por favor, digite S ou N.')
+
 
     
 

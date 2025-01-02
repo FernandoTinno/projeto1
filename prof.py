@@ -54,16 +54,6 @@ def cadastro_prof():
                 else:
                     print(f'deu errado')
    
-    while True:
-            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):').lower()
-            
-            if voltar == 's':
-                return True
-            
-            elif voltar == 'n':
-                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
-            else:
-                print(f'Opção inválida. Por favor, digite S ou N.')
 
 
 

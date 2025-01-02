@@ -23,16 +23,19 @@ def main():
         controle.menu()
         opcao = input("Digite a opção: ")
         if opcao == '1':
-            voltar = controle.chamar_funcao_aluno(), controle.voltar_menu()
+            voltar = controle.cadastro_aluno(), controle.voltar_menu()
             
         elif opcao == '2':
-            voltar = controle.chamar_funcao_prof(),controle.voltar_menu()
+            voltar = controle.cadastro_prof(),controle.voltar_menu()
             
         elif opcao == '3':
-            voltar = controle.chamar_funcao_materia(),controle.voltar_menu()
+            voltar = controle.cadastro_materia(),controle.voltar_menu()
             
         elif opcao == '4':
-            voltar = controle.chamar_funcao_turma(),controle.voltar_menu()
+            voltar = controle.cadastro_turma(),controle.voltar_menu()
+        
+        elif opcao == '5':
+            voltar = controle.teste(),controle.voltar_menu()
 
         elif opcao == '12':
             voltar = False
