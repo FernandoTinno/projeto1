@@ -23,21 +23,22 @@ def main():
         controle.menu()
         opcao = input("Digite a opção: ")
         if opcao == '1':
-            voltar = controle.chamar_funcao_aluno()
+            voltar = controle.chamar_funcao_aluno(), controle.voltar_menu()
             
         elif opcao == '2':
-            voltar = controle.chamar_funcao_prof()
+            voltar = controle.chamar_funcao_prof(),controle.voltar_menu()
             
         elif opcao == '3':
-            voltar = controle.chamar_funcao_materia()
+            voltar = controle.chamar_funcao_materia(),controle.voltar_menu()
             
         elif opcao == '4':
-            voltar = controle.chamar_funcao_turma()
+            voltar = controle.chamar_funcao_turma(),controle.voltar_menu()
+
         elif opcao == '12':
             voltar = False
             print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
         
-            
+
 
 main()
 

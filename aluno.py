@@ -93,32 +93,29 @@ def cadastro_aluno():
                     veri_mostrar_2 = mostrar_2.lower()
                     if veri_mostrar_2 == 's':
                         print(f'{ficha_aluno_2}\n')
-                        break     
+                           
                     elif veri_mostrar_2 == 'n':
                         print(f'Tudo bem!')
                         break
                     else:
                         print(f'deu errado')        
                 
-                return lista_aluno
+                
             elif veri_mais_1 == 'n':
                 print(f'Tudo bem!')
                 break
             else:
                 print(f'algo deu errado')
+
                 
-    while True:
-            voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):').lower()
-            
-            if voltar == 's':
-                return True
-            
-            elif voltar == 'n':
-                return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
-            else:
-                print(f'Opção inválida. Por favor, digite S ou N.')
-    
-    
-        
-
-
+                
+            while True:
+                    voltar= input(f'Ok, voce vai voltar para o menu principal(s ou n):').lower()
+                        
+                    if voltar == 's':
+                        return True
+                        
+                    elif voltar == 'n':
+                        return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
+                    else:
+                        print(f'Opção inválida. Por favor, digite S ou N.')
