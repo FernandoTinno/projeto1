@@ -3,6 +3,13 @@ aluno_lista = []
 prof_lista = []
 materia_lista = []
 turma_lista = []
+turma_completa_a = {}
+turma_completa_b = {}
+turma_completa_c = {}
+turma_completa_d = {}
+turma_completa_e = {}
+
+
 
 
 def menu():
@@ -157,7 +164,7 @@ def cadastro_prof():
     endereco = input(f'endereço do professor(a):')
     tel =  input(f'telefone do professor(a): ')
     email = input(f'email do professor(a):')
-    disciplina = input(f'o professor(a) ministra qual disciplina:')
+    
     
     
     letras = 'ABCDE'
@@ -167,7 +174,7 @@ def cadastro_prof():
     cod_proffinal = cod_prof + embaralhar_letra
     
     
-    ficha_prof = {'nome_professor': nome, 'nascimento_professor' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo_professor' : sexo, 'endereco_professor' : endereco, 'telefone_professor' : tel, 'email_professor' : email, 'disciplina_professor' : disciplina , 'codigo_professor' : cod_proffinal}
+    ficha_prof = {'nome_professor': nome, 'nascimento_professor' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo_professor' : sexo, 'endereco_professor' : endereco, 'telefone_professor' : tel, 'email_professor' : email,  'codigo_professor' : cod_proffinal}
     prof_lista.append(ficha_prof['nome_professor'])
 
 
@@ -214,7 +221,7 @@ def cadastro_prof():
                 endereco_2 = input(f'endereço do Professor(a):')
                 tel_2 =  input(f'telefone do Professor(a): ')
                 email_2 = input(f'email do Professor(a):')
-                disciplina_2 = input(f'o professor(a) ministra qual disciplina:')
+                
                 
                 
                 embaralhar_letras_2 = random.choice(letras)
@@ -222,7 +229,7 @@ def cadastro_prof():
                 cod_prof_2 = str(prof_2)
                 cod_proffinal_2 = cod_prof_2 + embaralhar_letras_2
                 
-                ficha_prof_2 = {'nome_professor': nome_2, 'nascimento_professor' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo_professor' : sexo_2, 'endereco_professor' : endereco_2, 'telefone_professor' : tel_2, 'email_professor' : email_2, 'disciplina_professor' : disciplina_2 , 'codigo_professor' : cod_proffinal_2}
+                ficha_prof_2 = {'nome_professor': nome_2, 'nascimento_professor' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo_professor' : sexo_2, 'endereco_professor' : endereco_2, 'telefone_professor' : tel_2, 'email_professor' : email_2, 'codigo_professor' : cod_proffinal_2}
                 prof_lista.append(ficha_prof_2['nome_professor'])
                 
                 
@@ -267,7 +274,7 @@ def cadastro_materia():
                 break  
             except ValueError:
                 print("\nnão foi possivel cadastrar as horas, digite um numero inteiro.\n")
-    materia_professor = input(f'qual professor está responsavel por essa materia: ')
+
     
 
     letras = 'ABCDE'
@@ -277,7 +284,7 @@ def cadastro_materia():
     cod_materiafinal = cod_materia + embaralhar_letra
    
    
-    ficha_materia = {'nome_materia' : nome, 'carga_materia' : carga, 'professor_materia' : materia_professor, 'codigo_materia' : cod_materiafinal}
+    ficha_materia = {'nome_materia' : nome, 'carga_materia' : carga, 'codigo_materia' : cod_materiafinal}
     
     materia_lista.append(ficha_materia['nome_materia'])
     
@@ -316,7 +323,7 @@ def cadastro_materia():
                             break  
                         except ValueError:
                             print("\nnão foi possivel cadastrar as horas, digite um numero inteiro.\n")
-                materia_professor_2 = input(f'qual professor está responsavel por essa materia: ')
+                
                 
 
                 letras = 'ABCDE'
@@ -326,7 +333,7 @@ def cadastro_materia():
                 cod_materiafinal_2 = cod_materia_2 + embaralhar_letra_2
             
             
-                ficha_materia_2 = {'nome_materia' : nome_2, 'carga_materia' : carga_2, 'professor_materia' : materia_professor_2, 'codigo_materia' : cod_materiafinal_2}
+                ficha_materia_2 = {'nome_materia' : nome_2, 'carga_materia' : carga_2, 'codigo_materia' : cod_materiafinal_2}
                 
                 materia_lista.append(ficha_materia_2['nome_materia'])
                 
@@ -448,7 +455,78 @@ def cadastro_turma():
                 return turma_lista
             
             else:
-                print(f'digite S ou N')    
+                print(f'digite S ou N')
+
+def mesclar_aluno_turma():
+    global turma_lista
+    global aluno_lista
+    global turma_completa_a
+    global turma_completa_b
+    global turma_completa_c
+    global turma_completa_d
+    global turma_completa_e
+    alunos_a = []
+    alunos_b = []
+    alunos_c = []
+    alunos_d = []
+    alunos_e = []
+    while True:
+        if not aluno_lista:
+            print(f'Você não cadastrou um aluno(a)')
+            break
+        if not turma_lista:
+            print(f'Você não cadastrou uma turma')
+            break
+        if aluno_lista and turma_lista:
+            print(f'turmas cadastradas: {turma_lista}\nalunos matriculados: {aluno_lista}')
+            escolhe_turma = input(f'qual turma você deseja alocar o aluno:')
+            escolhe_turma_certo = escolhe_turma.upper()
+
+            if escolhe_turma_certo in turma_lista:
+                print(f'turma escolhida')        
+            else:
+                print(f'a turma escolhida não consta no sistema')
+                break
+                    
+            escolhe_aluno = input(f'aloque um aluno para a turma {escolhe_turma_certo}: ')
+            escolhe_aluno_certo = escolhe_aluno.lower()
+            if escolhe_aluno_certo in aluno_lista:
+                print(f'aluno escolhido')
+            else:
+                print(f'o aluno {escolhe_aluno} não está cadastrado no sistema')
+                break
+
+            if escolhe_turma_certo == 'A':
+                alunos_a.append(escolhe_aluno_certo)
+                turma_completa_a.update({'turma' : escolhe_turma_certo, 'alunos' : alunos_a})
+                print(f'cadastro feito com sucesso, aqui está a turma A:\n')
+                print(turma_completa_a)
+                break
+
+            if escolhe_turma_certo == 'B':
+                alunos_a.append(escolhe_aluno_certo)
+                turma_completa_b = {'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_b}
+
+            if escolhe_turma_certo == 'C':
+                alunos_a.append(escolhe_aluno_certo)
+                turma_completa_c = {'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_c}
+
+            if escolhe_turma_certo == 'D':
+                alunos_a.append(escolhe_aluno_certo)
+                turma_completa_d = {'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_d}
+
+            if escolhe_turma_certo == 'E':  
+                alunos_a.append(escolhe_aluno_certo)
+                turma_completa_e = {'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_e}
+        return turma_completa_a
+            
+
+        
+
+
+            
+            
+                
 
 
 
@@ -459,10 +537,13 @@ def teste():
     global materia_lista
     global turma_lista
 
+    lista_teste = {'nome' : aluno_lista}
     print(aluno_lista)
     print(prof_lista)
     print(materia_lista)
     print(turma_lista)
+    print(lista_teste)
+    
 
 
 
@@ -483,7 +564,8 @@ def voltar_menu():
                     return True
                         
                 elif voltar == 'n':
-                    return print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
+                    print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n') 
+                    return False
                 else:
                     print(f'Opção inválida. Por favor, digite S ou N.')
     

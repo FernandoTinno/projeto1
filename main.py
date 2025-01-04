@@ -19,26 +19,51 @@ import controle
 
 def main():
     voltar = True
-    while voltar:
+    voltar_1 = True
+    
+    while voltar and voltar_1:
         controle.menu()
         opcao = input("Digite a opção: ")
         if opcao == '1':
-            voltar = controle.cadastro_aluno(), controle.voltar_menu()
+            voltar = controle.cadastro_aluno()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                break
             
         elif opcao == '2':
-            voltar = controle.cadastro_prof(),controle.voltar_menu()
+            voltar = controle.cadastro_prof()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                break
             
         elif opcao == '3':
-            voltar = controle.cadastro_materia(),controle.voltar_menu()
+            voltar = controle.cadastro_materia()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                break
             
         elif opcao == '4':
-            voltar = controle.cadastro_turma(),controle.voltar_menu()
+            voltar = controle.cadastro_turma()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                break
         
         elif opcao == '5':
-            voltar = controle.teste(),controle.voltar_menu()
+            voltar = controle.teste()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                    break
+        
+        elif opcao == '6':
+            voltar = controle.mesclar_aluno_turma()
+            voltar_1 = controle.voltar_menu()
+            if voltar_1 == False:
+                break
+            
 
         elif opcao == '12':
             voltar = False
+            voltar_1 = False
             print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
         
 
