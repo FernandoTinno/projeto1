@@ -73,5 +73,5 @@ main()
 
 '''
 amanha pensar na hierarquia dos processos de matricula. exp: nn pode cadastrar a turma se não houver aluno,professor e disciplina e assim em diante
-e pensar como armazenar os cadastros.
+e pensar como armazenar os cadastross.
 '''
