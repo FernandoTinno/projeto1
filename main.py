@@ -14,7 +14,7 @@ import time
 - O sistema deve permitir a filtragem de professores por disciplina.
 - O sistema deve permitir a consulta de alunos matriculados em turmas.
 - O sistema deve permitir a consulta de professores alocados em disciplinas.
-- O sistema deve permitir a consulta de disciplinas alocadas em turmas.
+- O sistema deve permitir a consulta de disciplinas alocadas em turmas..
 
 '''
 
