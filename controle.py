@@ -12,6 +12,10 @@ turma_completa_e = {}
 prof_materia = {}
 prof_materia_2 = {}
 materia_repetida = []
+ficha_prof = {}
+ficha_prof_2 = {}
+ficha_aluno = {}
+ficha_aluno_2 = {}
 
 
 
@@ -40,6 +44,8 @@ def menu():
 
 def cadastro_aluno():
     global aluno_lista
+    global ficha_aluno
+    global ficha_aluno_2
     
     
     while True:
@@ -126,7 +132,7 @@ def cadastro_aluno():
                 cod_matricula_2 = str(matricula_2)
                 cod_matriculafinal_2 = cod_matricula_2 + embaralhar_letras_2
                 
-                ficha_aluno_2 = {'nome_a': nome_2, 'nascimento_a' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo_a' : sexo_2, 'endereco_a' : endereco_2, 'telefone_a' : tel_2, 'email_a' : email_2, 'codigo_a' : cod_matriculafinal_2}
+                ficha_aluno_2 = {'nome do aluno': nome_2, 'nascimento' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo' : sexo_2, 'endereco' : endereco_2, 'telefone' : tel_2, 'email' : email_2, 'codigo' : cod_matriculafinal_2}
                 aluno_lista.append(ficha_aluno_2['nome_a'])
                 
                 
@@ -162,6 +168,8 @@ def cadastro_aluno():
 
 def cadastro_prof():
     global prof_lista
+    global ficha_prof
+    global ficha_prof_2
 
     while True:
         nome = input(f'Qual o nome do professor(a):')
@@ -192,7 +200,7 @@ def cadastro_prof():
     cod_proffinal = cod_prof + embaralhar_letra
     
     
-    ficha_prof = {'nome_professor': nome, 'nascimento_professor' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo_professor' : sexo, 'endereco_professor' : endereco, 'telefone_professor' : tel, 'email_professor' : email,  'codigo_professor' : cod_proffinal}
+    ficha_prof = {'nome_professor': nome_1_certo, 'nascimento_professor' : f'{data_dia}/{data_mes}/{data_ano}', 'sexo_professor' : sexo, 'endereco_professor' : endereco, 'telefone_professor' : tel, 'email_professor' : email, 'disciplina do professor': None,  'codigo_professor' : cod_proffinal}
     prof_lista.append(ficha_prof['nome_professor'])
 
 
@@ -247,7 +255,7 @@ def cadastro_prof():
                 cod_prof_2 = str(prof_2)
                 cod_proffinal_2 = cod_prof_2 + embaralhar_letras_2
                 
-                ficha_prof_2 = {'nome_professor': nome_2, 'nascimento_professor' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo_professor' : sexo_2, 'endereco_professor' : endereco_2, 'telefone_professor' : tel_2, 'email_professor' : email_2, 'codigo_professor' : cod_proffinal_2}
+                ficha_prof_2 = {'nome_professor': nome_2_certo, 'nascimento_professor' : f'{data_dia_2}/{data_mes_2}/{data_ano_2}', 'sexo_professor' : sexo_2, 'endereco_professor' : endereco_2, 'telefone_professor' : tel_2, 'email_professor' : email_2, 'codigo_professor' : cod_proffinal_2}
                 prof_lista.append(ficha_prof_2['nome_professor'])
                 
                 
@@ -309,7 +317,7 @@ def cadastro_materia():
     cod_materiafinal = cod_materia + embaralhar_letra
    
    
-    ficha_materia = {'nome_materia' : nome, 'carga_materia' : carga, 'codigo_materia' : cod_materiafinal}
+    ficha_materia = {'nome_materia' : nome_1_certo, 'carga_materia' : carga, 'codigo_materia' : cod_materiafinal}
     
     materia_lista.append(ficha_materia['nome_materia'])
     
@@ -358,7 +366,7 @@ def cadastro_materia():
                 cod_materiafinal_2 = cod_materia_2 + embaralhar_letra_2
             
             
-                ficha_materia_2 = {'nome_materia' : nome_2, 'carga_materia' : carga_2, 'codigo_materia' : cod_materiafinal_2}
+                ficha_materia_2 = {'nome_materia' : nome_2_certo, 'carga_materia' : carga_2, 'codigo_materia' : cod_materiafinal_2}
                 
                 materia_lista.append(ficha_materia_2['nome_materia'])
                 
@@ -547,7 +555,7 @@ def mesclar_aluno_turma():
 
             if escolhe_turma_certo == 'A':
                 alunos_a.append(escolhe_aluno_certo)
-                turma_completa_a.update({'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_a})
+                turma_completa_a = ({'nome da turma' : escolhe_turma_certo, 'alunos' : alunos_a})
                 print(f'cadastro feito com sucesso, aqui está a turma A:\n')
                 print(turma_completa_a)
                 
@@ -616,7 +624,7 @@ def mesclar_aluno_turma():
                     
                     if escolhe_turma_certo_2 == 'A':
                         alunos_a.append(escolhe_aluno_certo_2)
-                        turma_completa_a.update({'nome da turma' : escolhe_turma_certo_2, 'alunos' : alunos_a})
+                        turma_completa_a =({'nome da turma' : escolhe_turma_certo_2, 'alunos' : alunos_a})
                         print(f'cadastro feito com sucesso, aqui está a turma A:\n')
                         print(turma_completa_a)
                         return turma_completa_a
@@ -733,18 +741,28 @@ def mesclar_disciplina_prof():
             
             escolhe_prof = input(f'aloque um professor para a materia {escolhe_materia}: ')
             escolhe_prof_certo = escolhe_prof.lower()
+            
             if escolhe_prof_certo in prof_lista:            
                 print(f'professor escolhido com sucesso!')
-                            
+                
+                if escolhe_prof_certo in ficha_prof['nome_professor']:            
+                    ficha_prof.update({'disciplina do professor':escolhe_materia})
+                    print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
+                    materia_repetida.append(escolhe_materia_certo)
+                    print(ficha_prof)
+                
+                elif escolhe_prof_certo in ficha_prof_2['nome_professor']:
+                    ficha_prof_2.update({'disciplina do professor':escolhe_materia})
+                    print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
+                    materia_repetida.append(escolhe_materia_certo)
+                    print(ficha_prof_2)    
+            
             else:
                 print(f'o professor(a) {escolhe_prof} não está cadastrado no sistema,volte para o menu e realize o cadastro do mesmo')
                 time.sleep(1)
-                return True
+                return True 
             
-            prof_materia = {'nome do professor' : escolhe_prof, 'disciplina do professor' : escolhe_materia}
-            print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
-            materia_repetida.append(escolhe_materia_certo)
-            print(prof_materia)
+            
             
             while True:
                 mais_1 = input(f'você gosaria de fazer mais uma matricula? Digite S ou N:')
@@ -757,12 +775,9 @@ def mesclar_disciplina_prof():
                         escolhe_materia_2 = input(f'qual materia você deseja alocar o professor:')
                         escolhe_materia_certo_2 = escolhe_materia_2.lower()
                         
-                        if escolhe_materia_certo_2 == prof_materia['disciplina do professor']:
-                            print(f'essa materia já possui um professor')
-                        
-                        elif escolhe_materia_certo_2 in materia_repetida:
-                            print(f'essa materia já possui um professor')
-                            
+                        if escolhe_materia_certo_2 in materia_repetida:
+                            print(f'essa materia já possui um professor\n')
+                             
                         elif escolhe_materia_certo_2 in materia_lista:
                             print(f'materia escolhida')
                             break
@@ -771,28 +786,41 @@ def mesclar_disciplina_prof():
                             time.sleep(1)
                             return True
                     
-                    escolhe_prof_2 = input(f'aloque um professor para a materia {escolhe_materia_2}: ')
-                    escolhe_prof_certo_2 = escolhe_prof_2.lower()
-                    if escolhe_prof_certo_2 in prof_lista:            
-                        print(f'professor escolhido com sucesso!')
-                      
-                        prof_materia_2 = {'nome do professor' : escolhe_prof_2, 'disciplina do professor' : escolhe_materia_2}
-                        print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
-                        materia_repetida.append(escolhe_materia_certo_2)
-                        print(prof_materia_2)
-                        return prof_materia_2
-                      
-                                    
-                    else:
-                        print(f'o professor(a) {escolhe_prof_2} não está cadastrado no sistema,volte para o menu e realize o cadastro do mesmo')
-                        time.sleep(1)
-                        return True
+                    while True:
+                        escolhe_prof_2 = input(f'aloque um professor para a materia {escolhe_materia_2}: ')
+                        escolhe_prof_certo_2 = escolhe_prof_2.lower()
+                        
+                        
+                        if escolhe_prof_certo_2 in prof_lista:            
+                            print(f'professor escolhido com sucesso!')
+                            
+                            if escolhe_prof_certo_2 in ficha_prof['nome_professor']:            
+                                ficha_prof.update({'disciplina do professor':escolhe_materia_2})
+                                print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
+                                materia_repetida.append(escolhe_materia_certo)
+                                print(ficha_prof)
+                                return ficha_prof
+                            elif escolhe_prof_certo_2 in ficha_prof_2['nome_professor']:
+                                ficha_prof_2.update({'disciplina do professor':escolhe_materia_2})
+                                print(f'Você atribuiu uma materia a um professor, aqui está o cadastro:\n')
+                                materia_repetida.append(escolhe_materia_certo)
+                                print(ficha_prof_2)
+                                return ficha_prof_2
+            
+                        else:
+                            print(f'o professor(a) {escolhe_prof_2} não está cadastrado no sistema,volte para o menu e realize o cadastro do mesmo')
+                            time.sleep(1)
+                            return True        
+                        
+                            
+                    
+
                     
                     
+                
                 elif veri_mais_1 == 'n':
                     print(f'Tudo bem!')
-                    return prof_materia
-                    
+                    return ficha_prof
                 else:
                     print(f'digite S ou N')
 
@@ -803,6 +831,10 @@ def mesclar_disciplina_turma():
     global materia_lista
     global turma_lista
     global turma_completa_a
+    global turma_completa_b
+    global turma_completa_c
+    global turma_completa_d
+    global turma_completa_e
     
     #print(f'7-Atribuir uma disciplina a uma turma')
     
@@ -849,7 +881,7 @@ def mesclar_disciplina_turma():
                     print(f'tente novamente, digite S ou N')       
                      
         else:
-            print(f'aqui estão as Turmas\n{turma_lista}\n e materias {materia_lista}')
+            print(f'aqui estão as Turmas {turma_lista}\n e materias {materia_lista}')
             
             escolha_turma = input(f'qual das turmas você deseja atribuir uma materia: ')
             escolha_turma_certa = escolha_turma.upper()
@@ -874,34 +906,29 @@ def mesclar_disciplina_turma():
                 return True
             
             if escolha_turma_certa == 'A':
-                novo_turma_completa_a = turma_completa_a.copy()
-                novo_turma_completa_a.update({'materia da classe' : escolha_materia})
-                print(novo_turma_completa_a)
-                return novo_turma_completa_a
+                turma_completa_a.update({'materia da classe' : escolha_materia})
+                print(turma_completa_a)
+                
             
             if escolha_turma_certa == 'B':
-                novo_turma_completa_b = turma_completa_b.copy()
-                novo_turma_completa_b.update({'materia da classe' : escolha_materia})
-                print(novo_turma_completa_b)
-                return novo_turma_completa_b
+                turma_completa_b.update({'materia da classe' : escolha_materia})
+                print(turma_completa_b)
+                
             
             if escolha_turma_certa == 'C':
-                novo_turma_completa_c = turma_completa_c.copy()
-                novo_turma_completa_c.update({'materia da classe' : escolha_materia})
-                print(novo_turma_completa_c)
-                return novo_turma_completa_c
+                turma_completa_c.update({'materia da classe' : escolha_materia})
+                print(turma_completa_c)
+                
             
             if escolha_turma_certa == 'D':
-                novo_turma_completa_d = turma_completa_d.copy()
-                novo_turma_completa_d.update({'materia da classe' : escolha_materia})
-                print(novo_turma_completa_d)
-                return novo_turma_completa_d
+                turma_completa_d.update({'materia da classe' : escolha_materia})
+                print(turma_completa_d)
+               
             
             if escolha_turma_certa == 'E':
-                novo_turma_completa_e = turma_completa_e.copy()
-                novo_turma_completa_e.update({'materia da classe' : escolha_materia})
-                print(novo_turma_completa_e)
-                return novo_turma_completa_e
+                turma_completa_e.update({'materia da classe' : escolha_materia})
+                print(turma_completa_e)
+         
             
             
             while True:
@@ -913,7 +940,7 @@ def mesclar_disciplina_turma():
                     
                     
                     
-                    print(f'aqui estão as Turmas\n{turma_lista}e disciplinas{materia_lista}')
+                    print(f'aqui estão as Turmas {turma_lista}\ne disciplinas{materia_lista}')
             
                     escolha_turma_2 = input(f'qual das turmas você deseja atribuir uma materia: ')
                     escolha_turma_certa_2 = escolha_turma_2.upper()
@@ -967,43 +994,264 @@ def mesclar_disciplina_turma():
                         print(novo_turma_completa_e)
                         return novo_turma_completa_e
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-   
-                    
-                    
-                    
                 elif veri_mais_1 == 'n':
                     print(f'Tudo bem!')
         
                     if escolha_turma_certa == 'A':
-                        return novo_turma_completa_a
+                        return turma_completa_a
                     
                     elif escolha_turma_certa == 'B':
-                        return novo_turma_completa_b
+                        return turma_completa_b
                     
                     elif escolha_turma_certa == 'C':
-                        return novo_turma_completa_c
+                        return turma_completa_c
                     
                     elif escolha_turma_certa == 'D':
-                        return novo_turma_completa_d
+                        return turma_completa_d
                     
                     elif escolha_turma_certa == 'E':
-                        return novo_turma_completa_e
+                        return turma_completa_e
                     
             
                 else:
                     print(f'digite S ou N')
+
+
+
+
+def filtro_prof_disciplina():
+    global prof_lista
+    global materia_lista
+    global prof_materia
+    global prof_materia_2 
+    global ficha_prof
+    global ficha_prof_2
+
+
+    while True:
+        if not prof_lista:
+            print(f'para realizar esse procedimento, cadastre um professor,materia e por fim cadastre o professor na materia desejada')     
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+            
+            
+        elif not materia_lista:
+            print(f'para realizar esse procedimento, cadastre um professor,materia e por fim cadastre o professor na materia desejada')    
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+                    
+                    
+        elif not ficha_prof:
+            print(f'para realizar esse procedimento, cadastre um professor,materia e por fim cadastre o professor na materia desejada')
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+                    
+        else:
+            print(f'materias cadastradas: {materia_lista}\n')
+            escolhe_filtro = input(f'qual dessas materias você gostaria de saber o professor: ').lower()
+            
+            
+            if escolhe_filtro in materia_lista:
+                print(f'aqui está o cadastro do professor de acordo com a materia escolhida\n')
+                
+                if escolhe_filtro in ficha_prof['disciplina do professor']:
+                    print(f'{ficha_prof}\n')
+                    
+                    while True:
+                        print(f'filtragem feita com sucesso\n')
+                        escolha = input(f'voce quer voltar para o menu (S ou N):')
+                        veri_escolha = escolha.lower()
+                        if veri_escolha == 's':
+                            return True
+                        elif veri_escolha == 'n':
+                            return False
+                        else:
+                            print(f'tente novamente, digite S ou N')  
+                  
+                  
+                            
+                elif escolhe_filtro in ficha_prof_2['disciplina do professor'] :
+                    print(f'{ficha_prof_2}\n')
+                      
+                    while True:
+                        print(f'filtragem feita com sucesso\n')
+                        escolha = input(f'voce quer voltar para o menu (S ou N):')
+                        veri_escolha = escolha.lower()
+                        if veri_escolha == 's':
+                            return True
+                        elif veri_escolha == 'n':
+                            return False
+                        else:
+                            print(f'tente novamente, digite S ou N') 
+                        
+            else:
+                print(f'a materia que voce deseja filtrar não está cadastrada volte para o menu e cadastre o mesmo')
+                time.sleep(1)
+                return True    
+            
+           
+def filtro_aluno_turma():
+    global aluno_lista
+    global materia_lista
+    global turma_lista
+    global turma_completa_a
+    global ficha_aluno
+    global ficha_aluno_2
+
+
+    while True:
+        if not aluno_lista:
+            print(f'para realizar esse procedimento, cadastre um aluno, materia, turma, cadastre o aluno na turma desejada e por fim a materia na turma desejada')     
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+            
+            
+        elif not materia_lista:
+            print(f'para realizar esse procedimento, cadastre um aluno, materia, turma, cadastre o aluno na turma desejada e por fim a materia na turma desejada')   
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+                    
+                    
+        elif not turma_lista:
+            print(f'para realizar esse procedimento, cadastre um aluno, materia, turma, cadastre o aluno na turma desejada e por fim a materia na turma desejada')
+            
+            while True:
+                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                veri_escolha = escolha.lower()
+                if veri_escolha == 's':
+                    return True
+                elif veri_escolha == 'n':
+                    return False
+                else:
+                    print(f'tente novamente, digite S ou N')
+        
+        else:
+            print(f'turmas cadastradas: {turma_lista}\n')
+            escolhe_filtro = input(f'qual dessas turmas você gostaria de saber os alunos: ').upper()
+            
+            
+            if escolhe_filtro in turma_lista:
+                print(f'aqui está o cadastro do aluno de acordo com a turma escolhida\n')
+                
+                if escolhe_filtro == 'A':
+                    print(f'{turma_completa_a}')
+                    aluno = input(f'voce quer ver o cadastro do aluno: ')
+                    if aluno == 's':
+                        if ficha_aluno['nome do aluno'] in turma_completa_a['alunos']:
+                            print(ficha_aluno)
+                            
+                            while True:
+                                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                                veri_escolha = escolha.lower()
+                                if veri_escolha == 's':
+                                    return True
+                                elif veri_escolha == 'n':
+                                    return False
+                                else:
+                                    print(f'tente novamente, digite S ou N')
+                                    
+                                    
+                        else:
+                            print(f'deu muito errado')
+                            while True:
+                                escolha = input(f'voce quer voltar para o menu (S ou N):')
+                                veri_escolha = escolha.lower()
+                                if veri_escolha == 's':
+                                    return True
+                                elif veri_escolha == 'n':
+                                    return False
+                                else:
+                                    print(f'tente novamente, digite S ou N')
+                            
+                '''         
+                if escolhe_filtro in turma_completa_a['nome da turma']:
+                    print(f'{}')
+                    
+                    while True:
+                        print(f'filtragem feita com sucesso\n')
+                        escolha = input(f'voce quer voltar para o menu (S ou N):')
+                        veri_escolha = escolha.lower()
+                        if veri_escolha == 's':
+                            return True
+                        elif veri_escolha == 'n':
+                            return False
+                        else:
+                            print(f'tente novamente, digite S ou N')  
+                  
+                  
+                            
+                elif escolhe_filtro in ficha_prof_2['disciplina do professor'] :
+                    print(f'{ficha_prof_2}\n')
+                      
+                    while True:
+                        print(f'filtragem feita com sucesso\n')
+                        escolha = input(f'voce quer voltar para o menu (S ou N):')
+                        veri_escolha = escolha.lower()
+                        if veri_escolha == 's':
+                            return True
+                        elif veri_escolha == 'n':
+                            return False
+                        else:
+                            print(f'tente novamente, digite S ou N') 
+                        '''
+            else:
+                print(f'a materia que voce deseja filtrar não está cadastrada volte para o menu e cadastre o mesmo')
+                time.sleep(1)
+                return True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
