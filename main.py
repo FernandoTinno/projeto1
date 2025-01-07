@@ -1,4 +1,5 @@
 import controle
+import time
 '''
 - Crie um sistema escolar que permita cadastrar alunos, professores, disciplinas e turmas.
 - Alunos: nome, matrícula (1238734), data de nascimento, sexo, endereço, telefone, e-mail.
@@ -47,25 +48,51 @@ def main():
             voltar_1 = controle.voltar_menu()
             if voltar_1 == False:
                 break
+       
+        
         
         elif opcao == '5':
-            voltar = controle.teste()
-            voltar_1 = controle.voltar_menu()
-            if voltar_1 == False:
-                    break
-        
-        elif opcao == '6':
             voltar = controle.mesclar_aluno_turma()
-            voltar_1 = controle.voltar_menu()
-            if voltar_1 == False:
-                break
             
+            if voltar == False:
+                print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')    
+                break
+            elif voltar == True:
+                voltar_1 = main()
+            elif voltar != True or False:
+                voltar_1 = controle.voltar_menu()    
+            
+            
+        elif opcao == '6':
+            voltar = controle.mesclar_disciplina_prof()
+            
+            if voltar == False:
+                print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')    
+                break
+            elif voltar == True:
+                voltar_1 = main()
+            elif voltar != True or False:
+                voltar_1 = controle.voltar_menu()
+                
+        elif opcao == '7':
+            voltar = controle.mesclar_disciplina_turma()
+            
+            if voltar == False:
+                print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')    
+                break
+            elif voltar == True:
+                voltar_1 = main()
+            elif voltar != True or False:
+                voltar_1 = controle.voltar_menu()
 
         elif opcao == '12':
             voltar = False
             voltar_1 = False
             print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')
         
+        else:
+            print(f'opção invalida, reiniciando sistema:')
+            time.sleep(2)
 
 
 main()
