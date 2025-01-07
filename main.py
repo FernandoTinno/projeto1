@@ -14,7 +14,7 @@ import time
 - O sistema deve permitir a filtragem de professores por disciplina.
 - O sistema deve permitir a consulta de alunos matriculados em turmas.
 - O sistema deve permitir a consulta de professores alocados em disciplinas.
-- O sistema deve permitir a consulta de disciplinas alocadas em turmas.
+- O sistema deve permitir a consulta de disciplinas alocadas em turmas..
 
 '''
 
@@ -122,5 +122,5 @@ main()
 
 '''
 amanha pensar na hierarquia dos processos de matricula. exp: nn pode cadastrar a turma se não houver aluno,professor e disciplina e assim em diante
-e pensar como armazenar os cadastross.
+e pensar como armazenar os cadastross..
 '''
