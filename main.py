@@ -106,6 +106,28 @@ def main():
                 voltar_1 = main()
             elif voltar != True or False:
                 voltar_1 = controle.voltar_menu()
+                
+        elif opcao == '10':
+            voltar = controle.filtro_materia_prof()
+            
+            if voltar == False:
+                print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')    
+                break
+            elif voltar == True:
+                voltar_1 = main()
+            elif voltar != True or False:
+                voltar_1 = controle.voltar_menu()
+                
+        elif opcao == '11':
+            voltar = controle.filtro_disciplinas_turma()
+            
+            if voltar == False:
+                print(f'\nVocê saiu do GAMPT, obrigado e volte sempre!\n')    
+                break
+            elif voltar == True:
+                voltar_1 = main()
+            elif voltar != True or False:
+                voltar_1 = controle.voltar_menu()
 
         elif opcao == '12':
             voltar = False
